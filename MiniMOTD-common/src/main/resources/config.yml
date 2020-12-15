@@ -44,3 +44,7 @@ bungeeOnly:
 
   # Setting this to true will disable the hover text showing online player usernames
   disablePlayerListHover: false
+
+  # Setting this to true will disable showing the amount of online players, instead showing '???'
+  # on the ping request.
+  hideOnlinePlayers: false

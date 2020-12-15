@@ -45,6 +45,7 @@ public class BungeeConfig extends MiniMOTDConfig {
         maxPlayers = config.getInt(MAX_PLAYERS);
         xValue = config.getInt(X_VALUE);
         fakePlayersEnabled = config.getBoolean(FAKE_PLAYERS_ENABLED);
+        hideOnlinePlayers = config.getBoolean(HIDE_ONLINE_PLAYERS);
         fakePlayers = config.getString(FAKE_PLAYERS);
         updateChecker = config.getBoolean(UPDATE_CHECKER);
         disablePlayerListHover = config.getBoolean(DISABLE_PLAYER_LIST_HOVER);

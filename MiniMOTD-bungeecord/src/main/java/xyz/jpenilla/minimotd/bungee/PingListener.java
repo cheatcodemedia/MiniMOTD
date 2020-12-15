@@ -30,7 +30,11 @@ public class PingListener implements Listener {
 
         if (response != null) {
             final ServerPing.Players players = response.getPlayers();
+
+
             int onlinePlayers = players.getOnline();
+            int maxPlayers = cfg.getAdjustedMaxPlayers(onlinePlayers, players.getMax());
+
             if (cfg.isFakePlayersEnabled()) {
                 try {
                     if (cfg.getFakePlayers().contains(":")) {
@@ -45,17 +49,24 @@ public class PingListener implements Listener {
                         final int addedPlayers = Integer.parseInt(cfg.getFakePlayers());
                         onlinePlayers = onlinePlayers + addedPlayers;
                     }
+                    maxPlayers = cfg.getAdjustedMaxPlayers(onlinePlayers, players.getMax());
                 } catch (NumberFormatException ex) {
                     miniMOTD.getLogger().warning("fakePlayers config invalid");
                 }
             }
-            players.setOnline(onlinePlayers);
 
-            final int maxPlayers = cfg.getAdjustedMaxPlayers(onlinePlayers, players.getMax());
-            players.setMax(maxPlayers);
+            if (cfg.isHideOnlinePlayers()) {
+                response.setPlayers(null);
+            } else {
+                players.setOnline(onlinePlayers);
 
-            if (cfg.isDisablePlayerListHover()) {
-                players.setSample(new ServerPing.PlayerInfo[]{});
+                players.setMax(maxPlayers);
+
+                if (cfg.isDisablePlayerListHover()) {
+                    players.setSample(new ServerPing.PlayerInfo[]{});
+                }
+
+                response.setPlayers(players);
             }
 
             if (cfg.isMotdEnabled()) {
@@ -66,7 +77,6 @@ public class PingListener implements Listener {
                 response.setDescriptionComponent(BungeeComponentSerializer.get().serialize(motd)[0]);
             }
 
-            response.setPlayers(players);
             final Favicon favicon = cfg.getRandomIcon();
             if (favicon != null) {
                 response.setFavicon(favicon);

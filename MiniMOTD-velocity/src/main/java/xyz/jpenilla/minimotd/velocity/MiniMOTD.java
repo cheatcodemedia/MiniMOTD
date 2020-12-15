@@ -88,7 +88,13 @@ public class MiniMOTD {
                 logger.info("fakePlayers config incorrect");
             }
         }
-        pong.onlinePlayers(onlinePlayers);
+
+        if (cfg.isHideOnlinePlayers()) {
+            pong.nullPlayers();
+        } else {
+            pong.onlinePlayers(onlinePlayers);
+        }
+
 
         int maxPlayers = cfg.getAdjustedMaxPlayers(onlinePlayers, pong.getMaximumPlayers());
         pong.maximumPlayers(maxPlayers);

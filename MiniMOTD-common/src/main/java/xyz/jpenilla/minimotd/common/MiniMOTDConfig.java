@@ -15,6 +15,7 @@ public abstract class MiniMOTDConfig {
     public static final String MAX_PLAYERS = Fields.maxPlayers + "." + Fields.maxPlayers;
     public static final String X_VALUE = Fields.maxPlayers + "." + Fields.xValue;
     public static final String FAKE_PLAYERS_ENABLED = "bungeeOnly." + Fields.fakePlayersEnabled;
+    public static final String HIDE_ONLINE_PLAYERS = "bungeeOnly." + Fields.hideOnlinePlayers;
     public static final String FAKE_PLAYERS = "bungeeOnly." + Fields.fakePlayers;
     public static final String UPDATE_CHECKER = Fields.updateChecker;
     public static final String DISABLE_PLAYER_LIST_HOVER = "bungeeOnly." + Fields.disablePlayerListHover;
@@ -23,6 +24,7 @@ public abstract class MiniMOTDConfig {
     @Getter protected boolean maxPlayersEnabled;
     @Getter protected boolean justXMoreEnabled;
     @Getter protected boolean fakePlayersEnabled;
+    @Getter protected boolean hideOnlinePlayers;
     @Getter protected int xValue;
     @Getter protected int maxPlayers;
     @Getter protected String fakePlayers;

@@ -65,6 +65,7 @@ public class VelocityConfig extends MiniMOTDConfig {
             maxPlayers = maxPlayersNode.getNode("maxPlayers").getInt();
             xValue = maxPlayersNode.getNode("xValue").getInt();
             fakePlayersEnabled = bungeeOnly.getNode("fakePlayersEnabled").getBoolean();
+            hideOnlinePlayers = bungeeOnly.getNode("hideOnlinePlayers").getBoolean();
             fakePlayers = bungeeOnly.getNode("fakePlayers").getString();
             updateChecker = node.getNode(UPDATE_CHECKER).getBoolean();
             disablePlayerListHover = bungeeOnly.getNode("disablePlayerListHover").getBoolean();
